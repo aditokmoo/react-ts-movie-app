@@ -22,6 +22,11 @@ input:focus {
     width: 1200px;
 }
 
+#player {
+    width: 100%;
+    height: 500px;
+}
+
 /* HEADER */
 header {
     background-image: url('./components/img/bg-image.jpg');
@@ -62,11 +67,10 @@ header .header-section p {
 
 header .header-section form input {
     width: 700px;
-    padding: 14px 20px;
+    padding: 14px 20px 14px 50px;
     margin: 40px 0;
     border: 0;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-radius: 5px;    
 }
 
 header .header-section form button {
@@ -80,6 +84,32 @@ header .header-section form button {
 
 header .header-section form button:hover {
     background: #66de98;
+}
+
+header .header-section form .movie-icon {
+    position: relative;
+    left: 40px;
+    top: 11px;
+    color: #ccc;
+    font-size: 2em;
+}
+
+header .header-section form .movie-icon.active {
+    color: #66de98;
+    text-shadow: rgba(102,222,152,1) 0px 0px 18px;
+}
+
+header .header-section form .search-icon {
+    position: relative;
+    right: 45px;
+    top: 10px;
+    color: #bbb;
+    border-left: 1px solid #ccc;
+    padding: 5px 0 5px 12px;
+}
+
+header .header-section form .search-icon.active {
+    color: #66de98;
 }
 
 /* NAV BAR SECTION */
@@ -134,15 +164,14 @@ section {
 section .section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 40px 0;
+    margin: 40px 50px;
 }
 
 /* MOVIE SECTION */
 section .section .movie {
     background-color: #fff;
     display: flex;
-    width: 40%;
+    width: 45%;
     margin: 20px;
     position: relative;
     box-shadow: 0px 0px 11px -5px rgba(0,0,0,0.75);
@@ -189,7 +218,7 @@ section .section .movie .box .view-btn:hover {
 section .section .show {
     background-color: #fff;
     display: flex;
-    width: 40%;
+    width: 45%;
     margin: 20px;
     position: relative;
     box-shadow: 0px 0px 11px -5px rgba(0,0,0,0.75);
@@ -243,10 +272,19 @@ section .section .show .box .view-btn:hover {
     margin-bottom: 20px;
     color: #000;
     font-weight: bold;
+    width: 60px;
 }
 
 .details #icon {
-    margin-right: 5px;
+    margin-right: 7px;
+    animation: animateArrowLeft 1s infinite ease-in-out;
+    position: relative;
+}
+
+@keyframes animateArrowLeft {
+    0% { left: 0px; }
+    50% { left: 5px; }
+    100% { left: 0px; }
 }
 
 .details .poster-section {
@@ -274,6 +312,59 @@ section .section .show .box .view-btn:hover {
     margin: 20px 0;
     font-family: Montserrat;
     line-height: 1.4;
-    font-size: 1.3em;
+    font-size: 1.1em;
     color: #888;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 1000px ) and (max-width: 1220px) {
+    .container {width: 100%}
+}
+
+@media (min-width: 710px ) and (max-width: 1000px) {
+    .container {width: 80% !important}
+    nav .nav-section ul li .link {padding: 20px 100px !important}
+}
+
+@media (min-width: 500px ) and (max-width: 1000px) {
+    .container {width: 100%}
+    header .header-section form input {width: 60%}
+    nav .nav-section ul li .link {padding: 20px 80px}
+    section .section {
+        display: block;
+        margin: 40px 0px;
+    }
+    section .section .movie {width: inherit}
+    section .section .show {width: inherit}
+    .details {margin: 50px 20px}
+}
+
+@media(max-width: 500px) {
+    .container {width: 100%}
+    header .header-section h1 {font-size: 2.4em}
+    header .header-section p {font-size: 13px}
+    header .header-section form input {width: 60%}
+    nav .nav-section ul li .link {padding: 20px 50px}
+    section .section {display: block; margin: 40px 0}
+    section .section .movie {
+        width: 80%;
+        display: block;
+        height: 750px;
+        margin: 40px auto;
+    }
+    section .section .movie img {width: 100%}
+    section .section .show {
+        width: 80%;
+        display: block;
+        height: 750px;
+        margin: 40px auto;
+    }
+    section .section .show img {width: 100%}
+    .details {margin: 50px 20px}
+}
+
+@media(max-width: 370px) {
+    header .header-section form input {width: 50%}
+    nav .nav-section ul li .link {padding: 20px 30px}
 }

@@ -1,29 +1,33 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Context from "../../context/Context"
-import { FaAngleDoubleLeft } from 'react-icons/fa'
+import Context from "../../context/Context";
+import { FaAngleDoubleLeft } from 'react-icons/fa';
 
 function Show() {
-  const { getTopShowDetails, show, img_path }: any = useContext(Context);
+  const { getTopShowDetails, getShowTrailer, show, img_path, showTrailer }: any = useContext(Context);
   const params = useParams();
 
   useEffect(() => {
     getTopShowDetails(params.id);
+    getShowTrailer(params.id)
   }, []);
 
   const {
     name,
     overview,
     backdrop_path,
-    poster_path
   } = show;
 
   return (
-    <div className="details">
-      <div className="container">
-        <Link to='/shows' className="back-btn"><FaAngleDoubleLeft id='icon' /> Back</Link>
-        <div className="poster-section">
-        <img src={backdrop_path !== null ? img_path + backdrop_path : img_path + poster_path} alt="Movie poster image" />
+    <div className='details'>
+      <div className='container'>
+        <Link to='/' className='back-btn'><FaAngleDoubleLeft id='icon' /> Back</Link>
+        <div className='poster-section'>
+        {showTrailer ?
+          <iframe id='player' src={`https://youtube.com/embed/${showTrailer}`}></iframe> 
+          : 
+          <img src={backdrop_path ? img_path + backdrop_path : 'https://wallpaperaccess.com/full/2903163.jpg'} alt='Movie poster image' />
+        }
         </div>
         <section>
           <h1>{name}</h1>

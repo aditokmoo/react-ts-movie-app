@@ -11,13 +11,13 @@ function App() {
     <>
     <ContextProvider>
       <Router>
-          <Routes>
-            <Route path='/' element={<Movies />} />
-            <Route path='/movie/:id' element={<Movie />} />
-            <Route path='/shows' element={<Shows />} />
-            <Route path='/show/:id' element={<Show />} />
-          </Routes>
-        </Router>
+        <Routes>
+          <Route path='/' element={<Shows />} />
+          <Route path='/movie/:id' element={<Movie />} />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/show/:id' element={<Show />} />
+        </Routes>
+      </Router>
     </ContextProvider>
     </>
   );
