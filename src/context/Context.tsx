@@ -98,7 +98,7 @@ export const ContextProvider = ({ children }: childrenType) => {
 
     // Movie Search Filter Function
     const filterMovies = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value
+        const value = e.target.value.toLowerCase();
         const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query='${value}'`);
         const data = await res.json();
         
