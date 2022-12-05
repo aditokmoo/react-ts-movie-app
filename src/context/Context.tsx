@@ -125,7 +125,7 @@ export const ContextProvider = ({ children }: childrenType) => {
 
     // TV Show Search Filter Function
     const filterShows = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+        const value = e.target.value.toLowerCase();
         const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query="${value}"`);
         const data = await res.json();
 
