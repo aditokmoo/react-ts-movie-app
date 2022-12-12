@@ -7,7 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function Movies() {
-  const { movies, getTopMovies, movies_api, img_path, filterMovieData, searchMovieData }: any = useContext(Context);
+  const { movies, getTopMovies, movies_api, img_path, filterMovieData, movieSearch }: any = useContext(Context);
 
   useEffect(() => {
     getTopMovies(movies_api);
@@ -21,7 +21,7 @@ function Movies() {
       <section>
         <div className='container'>
           <div className='section'>
-            {searchMovieData === '' || searchMovieData.length < 3 ?
+            {movieSearch === '' || movieSearch.length < 3 ?
               movies.map(({poster_path, title, overview, id}: movieShowType) => (
                 <div className='movie' key={id} data-aos='fade-up' data-aos-delay='200' data-aos-duration='1000'>
                   <img src={poster_path ? img_path + poster_path : 'https://vsetattoo.com.ua/wp-content/themes/tattookarma/assets/imagenotfound.svg'} alt='' />
@@ -33,7 +33,7 @@ function Movies() {
                 </div>
                 )):
                 filterMovieData.map(({poster_path, title, overview, id}: movieShowType) => (
-                  title.toLowerCase().startsWith(searchMovieData) &&
+                  title.toLowerCase().startsWith(movieSearch) &&
                   <div className='movie' key={id} data-aos='fade-up' data-aos-delay='200' data-aos-duration='1000'>
                     <img src={poster_path ? img_path + poster_path : 'https://vsetattoo.com.ua/wp-content/themes/tattookarma/assets/imagenotfound.svg'} alt='' />
                     <div className='box'>

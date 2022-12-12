@@ -7,7 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Shows() {
-  const { shows, getTopShows, filterShowData, searchShowData, tv_show_api, img_path }: any = useContext(Context);
+  const { shows, getTopShows, filterShowData, showSearch, tv_show_api, img_path }: any = useContext(Context);
 
   useEffect(() => {
     getTopShows(tv_show_api);
@@ -21,7 +21,7 @@ export default function Shows() {
       <section>
         <div className='container'>
           <div className='section'>
-          {searchShowData === '' || searchShowData.length < 3 ?
+          {showSearch === '' || showSearch.length < 3 ?
               shows.map(({poster_path, name, overview, id}: movieShowType) => (
                 <div className='show' key={id} data-aos='fade-up' data-aos-delay='200' data-aos-duration='1000'>
                   <img src={poster_path ? img_path + poster_path : 'https://vsetattoo.com.ua/wp-content/themes/tattookarma/assets/imagenotfound.svg'} alt='' />
@@ -33,7 +33,7 @@ export default function Shows() {
                 </div>
                 )):
                 filterShowData.map(({poster_path, name, overview, id}: movieShowType) => (
-                name.toLowerCase().startsWith(searchShowData) &&
+                name.toLowerCase().startsWith(showSearch) &&
                 <div className='show' key={id} data-aos='fade-up' data-aos-delay='200' data-aos-duration='1000'>
                   <img src={poster_path ? img_path + poster_path : 'https://vsetattoo.com.ua/wp-content/themes/tattookarma/assets/imagenotfound.svg'} alt='' />
                   <div className='box'>
